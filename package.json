@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js
   },
-  "devDependencies": {
+  "dependencies": {
      "discord.js": "11.1.0",
      "request": "2.81.0"
     }
