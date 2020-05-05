@@ -1,0 +1,13 @@
+{
+  "name": "bot-dc",
+  "version": "1.0.0",
+  "description": "botdc",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js
+  },
+  "devDependencies": {
+     "discord.js": "11.1.0",
+     "request": "2.81.0"
+    }
+}
