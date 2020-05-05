@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const axios = require('axios');
 const client = new Discord.Client();
-const fs = require ('fs');
 const colors = require('colors');
 require('dotenv-flow').config();
 
