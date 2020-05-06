@@ -3,6 +3,7 @@ const axios = require('axios');
 const client = new Discord.Client();
 const colors = require('colors');
 require('dotenv-flow').config();
+const { Client, MessageEmbed } = require('discord.js');
 
 
 colors.setTheme({
