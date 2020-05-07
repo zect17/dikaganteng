@@ -425,6 +425,7 @@ client.on('message',  async message => {
     .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Semoga Lancar Puasa! \n Niat Puasa \n نَوَيْتُ صَوْمَ غَدٍ عَنْ اَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هذِهِ السَّنَةِ ِللهِ تَعَالَى \n Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhaana haadzihis sanati lillahi ta'ala`)
     .setTimestamp()
     .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
+     message.channel.send(embed);
     setInterval (function() {
       const embed = new MessageEmbed()
       .setColor(12234)
@@ -445,6 +446,7 @@ client.on('message',  async message => {
     .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Semoga Lancar Puasa! \n Niat Puasa \n نَوَيْتُ صَوْمَ غَدٍ عَنْ اَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هذِهِ السَّنَةِ ِللهِ تَعَالَى \n Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhaana haadzihis sanati lillahi ta'ala`)
     .setTimestamp()
     .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
+    message.channel.send(embed);
     setInterval (function() {
       const embed = new MessageEmbed()
       .setColor(12234)
@@ -465,6 +467,7 @@ client.on('message',  async message => {
     .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Semoga Lancar Puasa! \n Niat Puasa \n نَوَيْتُ صَوْمَ غَدٍ عَنْ اَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هذِهِ السَّنَةِ ِللهِ تَعَالَى \n Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhaana haadzihis sanati lillahi ta'ala`)
     .setTimestamp()
     .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
+     message.channel.send(embed);
     setInterval (function() {
       const embed = new MessageEmbed()
       .setColor(12234)
