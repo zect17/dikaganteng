@@ -33,105 +33,18 @@ client.on('message', message => {
   if (message.content === prefix + 'corona') {
     message.channel.send("please enter your country code, ex : -corona.(code)")
     const embed = new MessageEmbed()
-      .setTitle('code corona information')
+      .setTitle('Here')
       .setColor(0xff0000)
-      .setDescription(`:flag_id: Indonesia : id \n :flag_sg: Singapore : sg \n :flag_my: Malaysia : my \n :flag_ph: Philippines : ph \n :flag_us: USA : us \n :flag_id : Data Per-Provinsi Indonesia : data`)
+      .setDescription(`:flag_id: Indonesia : id \n :flag_sg: Singapore : sg \n :flag_my: Malaysia : my \n :flag_ph: Philippines : ph \n :flag_us: USA : us`)
     message.channel.send(embed);
   }
   if (message.content === prefix + 'update') {
     const embed = new MessageEmbed()
       .setTitle('Here Bro :)')
       .setColor(0xff0000)
-      .setDescription(`New Corona Command Asia Country : -corona \n New Data Per-Provinsi Indonesias : -corona.data \n Jadwal Sholat dan Imsyak Daerah DKI only : -ramadhan`)
+      .setDescription(`New Corona Command ex : -corona.code \n :flag_id: Indonesia : id \n :flag_sg: Singapore : sg \n :flag_my: Malaysia : my \n :flag_ph: Philippines : ph \n :flag_us: USA : us`)
     message.channel.send(embed);
   }
-  if (message.content === '-ramadhan') {
-    let getCorona = async () => {
-      let response = await axios.get(
-        "http://muslimsalat.com/jakarta.json?key=bd099c5825cbedb9aa934e255a81a5fc"
-      );
-      let corona = response.data;
-      return corona; 
-    };   
-    let getTime = async () => {
-      let response = await axios.get(
-        "https://api.ipgeolocation.io/timezone?apiKey=9ed5bfa4bdfa4d6a916771bbcd24e4aa&lat=-7.4452823&long=111.03412999999999"
-      );
-      let time = response.data;
-      return time;
-    }; 
-    let coronaValue = await getCorona(); 
-    let timeValue = await getTime();
-    const embed = new MessageEmbed()
-      .setColor(0xff0000)
-      .setTitle("Jadwal Sholat dan Imsakiyah Pada Bulan Ramadhan :crescent_moon: ")
-      .addField(":one: **Subuh** ", `${coronaValue.items[0].fajr}`,true)
-      .addField(":two: **Dzuhur** ", `${coronaValue.items[0].dhuhr}`, true)
-      .addField(":three: **Ashar** ", `${coronaValue.items[0].asr}`, true)
-      .addField(":four: **Maghrib** ", `${coronaValue.items[0].maghrib}`,true)
-      .addField(":five: **Isyak** ", `${coronaValue.items[0].isha}`,true)
-      .addField(":six: **Imsak** ", `4:25 am`,true)
-      .setFooter("Data From Muslim Salat, Updated "+ timeValue.date_time_txt);
-    message.channel.send(embed);    
-  }
-  if (message.content === '-corona.data') {
-    let getCorona = async () => {
-      let response = await axios.get(
-        "https://api.kawalcorona.com/indonesia/provinsi/"
-      );
-      let corona = response.data;
-      return corona; 
-    };   
-    let getTime = async () => {
-      let response = await axios.get(
-        "https://api.ipgeolocation.io/timezone?apiKey=9ed5bfa4bdfa4d6a916771bbcd24e4aa&lat=-7.4452823&long=111.03412999999999"
-      );
-      let time = response.data;
-      return time;
-    }; 
-    let coronaValue = await getCorona(); 
-    let timeValue = await getTime();
-    const embed = new MessageEmbed()
-      .setColor(0xff0000)
-      .setTitle("Data COVID-19 Per-Provinsi di INDONESIA")
-      .addField(":one:" + `${coronaValue[0].attributes.Provinsi}`,"Positive : " + `${coronaValue[0].attributes.Kasus_Posi}` + ":family_man_boy_boy:    Recovered : " + `${coronaValue[0].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[0].attributes.Kasus_Meni}` + ":family_man_boy_boy:")
-      .addField(":two:" + `${coronaValue[1].attributes.Provinsi}`,"Positive : " +  `${coronaValue[1].attributes.Kasus_Posi}`+ ":family_man_boy_boy:    Recovered : " + `${coronaValue[1].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[1].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField(":three:" + `${coronaValue[2].attributes.Provinsi}`,"Positive : " + `${coronaValue[2].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[2].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[2].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField(":four:" + `${coronaValue[3].attributes.Provinsi}`,"Positive : " +  `${coronaValue[3].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[3].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[3].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField(":five:" + `${coronaValue[4].attributes.Provinsi}`,"Positive : " +  `${coronaValue[4].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[4].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[4].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField(":six:"+ `${coronaValue[5].attributes.Provinsi}`,"Positive : " +  `${coronaValue[5].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[5].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[5].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":seven:" + `${coronaValue[6].attributes.Provinsi}`,"Positive : " +  `${coronaValue[6].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[6].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[6].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":eight:"+ `${coronaValue[7].attributes.Provinsi}`,"Positive : " +  `${coronaValue[7].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[7].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[7].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":nine:" + `${coronaValue[8].attributes.Provinsi}`,"Positive : " +  `${coronaValue[8].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[8].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[8].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::zero:"+ `${coronaValue[9].attributes.Provinsi}`,"Positive : " +  `${coronaValue[9].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[9].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[9].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::one:"+ `${coronaValue[10].attributes.Provinsi}`,"Positive : " +  `${coronaValue[10].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[10].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[10].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::two:"+ `${coronaValue[11].attributes.Provinsi}`,"Positive : " +  `${coronaValue[11].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[11].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[11].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::three:"+ `${coronaValue[12].attributes.Provinsi}`,"Positive : " +  `${coronaValue[12].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[12].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[12].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::four:"+ `${coronaValue[13].attributes.Provinsi}`,"Positive : " +  `${coronaValue[13].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[13].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[13].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::five:"+ `${coronaValue[14].attributes.Provinsi}`,"Positive : " +  `${coronaValue[14].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[14].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[14].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::six:"+ `${coronaValue[15].attributes.Provinsi}`,"Positive : " +  `${coronaValue[15].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[15].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[15].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::seven:"+ `${coronaValue[16].attributes.Provinsi}`,"Positive : " +  `${coronaValue[16].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[16].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[16].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::eight:"+ `${coronaValue[17].attributes.Provinsi}`,"Positive : " +  `${coronaValue[17].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[17].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[17].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":one::nine:"+ `${coronaValue[18].attributes.Provinsi}`,"Positive : " +  `${coronaValue[18].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[18].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[18].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::zero:"+ `${coronaValue[19].attributes.Provinsi}`,"Positive : " +  `${coronaValue[19].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[19].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[19].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::one:"+ `${coronaValue[20].attributes.Provinsi}`,"Positive : " +  `${coronaValue[20].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[20].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[20].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::two:"+ `${coronaValue[21].attributes.Provinsi}`,"Positive : " +  `${coronaValue[21].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[21].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[21].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::three:"+ `${coronaValue[22].attributes.Provinsi}`,"Positive : " +  `${coronaValue[22].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[22].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[22].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::four:"+ `${coronaValue[23].attributes.Provinsi}`,"Positive : " +  `${coronaValue[23].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[23].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[23].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::five:"+ `${coronaValue[24].attributes.Provinsi}`,"Positive : " +  `${coronaValue[24].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[24].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[24].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::six:"+ `${coronaValue[25].attributes.Provinsi}`,"Positive : " +  `${coronaValue[25].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[25].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[25].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::seven:"+ `${coronaValue[26].attributes.Provinsi}`,"Positive : " +  `${coronaValue[26].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[26].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[26].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::eight:"+ `${coronaValue[27].attributes.Provinsi}`,"Positive : " +  `${coronaValue[27].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[27].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[27].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":two::nine:"+ `${coronaValue[28].attributes.Provinsi}`,"Positive : " +  `${coronaValue[28].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[28].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[28].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":three::zero:"+ `${coronaValue[29].attributes.Provinsi}`,"Positive : " +  `${coronaValue[29].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[29].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[29].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":three::one:"+ `${coronaValue[30].attributes.Provinsi}`,"Positive : " +  `${coronaValue[30].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[30].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[30].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":three::two:"+ `${coronaValue[31].attributes.Provinsi}`,"Positive : " +  `${coronaValue[31].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[31].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[31].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField( ":three::three:"+ `${coronaValue[32].attributes.Provinsi}`,"Positive : " +  `${coronaValue[32].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[32].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[32].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .addField(":three::four:" + `${coronaValue[33].attributes.Provinsi}`,"Positive : " + `${coronaValue[33].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[33].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[33].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
-      .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/1200px-Flag_of_Indonesia.svg.png")
-      .setFooter("Updated From Kawal Corona, "+ timeValue.date_time_txt);
-    message.channel.send(embed);
-  }  
 });
 
 
@@ -295,6 +208,93 @@ client.on('message',  async message => {
     message.channel.send(embed);    
 
   }
+  if (message.content === '-ramadhan') {
+    let getCorona = async () => {
+      let response = await axios.get(
+        "http://muslimsalat.com/jakarta.json?key=bd099c5825cbedb9aa934e255a81a5fc"
+      );
+      let corona = response.data;
+      return corona; 
+    };   
+    let getTime = async () => {
+      let response = await axios.get(
+        "https://api.ipgeolocation.io/timezone?apiKey=9ed5bfa4bdfa4d6a916771bbcd24e4aa&lat=-7.4452823&long=111.03412999999999"
+      );
+      let time = response.data;
+      return time;
+    }; 
+    let coronaValue = await getCorona(); 
+    let timeValue = await getTime();
+    const embed = new MessageEmbed()
+      .setColor(0xff0000)
+      .setTitle("Jadwal Sholat dan Imsakiyah Pada Bulan Ramadhan :crescent_moon: ")
+      .addField(":one: **Subuh** ", `${coronaValue.items[0].fajr}`,true)
+      .addField(":two: **Dzuhur** ", `${coronaValue.items[0].dhuhr}`, true)
+      .addField(":three: **Ashar** ", `${coronaValue.items[0].asr}`, true)
+      .addField(":four: **Maghrib** ", `${coronaValue.items[0].maghrib}`,true)
+      .addField(":five: **Isyak** ", `${coronaValue.items[0].isha}`,true)
+      .addField(":six: **Imsak** ", `4:25 am`,true)
+      .setFooter("Data From Muslim Salat, Updated "+ timeValue.date_time_txt);
+    message.channel.send(embed);    
+  }
+  if (message.content === '-corona.data') {
+    let getCorona = async () => {
+      let response = await axios.get(
+        "https://api.kawalcorona.com/indonesia/provinsi/"
+      );
+      let corona = response.data;
+      return corona; 
+    };   
+    let getTime = async () => {
+      let response = await axios.get(
+        "https://api.ipgeolocation.io/timezone?apiKey=9ed5bfa4bdfa4d6a916771bbcd24e4aa&lat=-7.4452823&long=111.03412999999999"
+      );
+      let time = response.data;
+      return time;
+    }; 
+    let coronaValue = await getCorona(); 
+    let timeValue = await getTime();
+    const embed = new MessageEmbed()
+      .setColor(0xff0000)
+      .setTitle("Data COVID-19 Per-Provinsi di INDONESIA")
+      .addField(":one:" + `${coronaValue[0].attributes.Provinsi}`,"Positive : " + `${coronaValue[0].attributes.Kasus_Posi}` + ":family_man_boy_boy:    Recovered : " + `${coronaValue[0].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[0].attributes.Kasus_Meni}` + ":family_man_boy_boy:")
+      .addField(":two:" + `${coronaValue[1].attributes.Provinsi}`,"Positive : " +  `${coronaValue[1].attributes.Kasus_Posi}`+ ":family_man_boy_boy:    Recovered : " + `${coronaValue[1].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[1].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField(":three:" + `${coronaValue[2].attributes.Provinsi}`,"Positive : " + `${coronaValue[2].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[2].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[2].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField(":four:" + `${coronaValue[3].attributes.Provinsi}`,"Positive : " +  `${coronaValue[3].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[3].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[3].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField(":five:" + `${coronaValue[4].attributes.Provinsi}`,"Positive : " +  `${coronaValue[4].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[4].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[4].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField(":six:"+ `${coronaValue[5].attributes.Provinsi}`,"Positive : " +  `${coronaValue[5].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[5].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[5].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":seven:" + `${coronaValue[6].attributes.Provinsi}`,"Positive : " +  `${coronaValue[6].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[6].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[6].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":eight:"+ `${coronaValue[7].attributes.Provinsi}`,"Positive : " +  `${coronaValue[7].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[7].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[7].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":nine:" + `${coronaValue[8].attributes.Provinsi}`,"Positive : " +  `${coronaValue[8].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[8].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[8].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::zero:"+ `${coronaValue[9].attributes.Provinsi}`,"Positive : " +  `${coronaValue[9].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[9].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[9].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::one:"+ `${coronaValue[10].attributes.Provinsi}`,"Positive : " +  `${coronaValue[10].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[10].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[10].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::two:"+ `${coronaValue[11].attributes.Provinsi}`,"Positive : " +  `${coronaValue[11].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[11].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[11].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::three:"+ `${coronaValue[12].attributes.Provinsi}`,"Positive : " +  `${coronaValue[12].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[12].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[12].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::four:"+ `${coronaValue[13].attributes.Provinsi}`,"Positive : " +  `${coronaValue[13].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[13].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[13].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::five:"+ `${coronaValue[14].attributes.Provinsi}`,"Positive : " +  `${coronaValue[14].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[14].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[14].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::six:"+ `${coronaValue[15].attributes.Provinsi}`,"Positive : " +  `${coronaValue[15].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[15].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[15].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::seven:"+ `${coronaValue[16].attributes.Provinsi}`,"Positive : " +  `${coronaValue[16].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[16].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[16].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::eight:"+ `${coronaValue[17].attributes.Provinsi}`,"Positive : " +  `${coronaValue[17].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[17].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[17].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":one::nine:"+ `${coronaValue[18].attributes.Provinsi}`,"Positive : " +  `${coronaValue[18].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[18].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[18].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::zero:"+ `${coronaValue[19].attributes.Provinsi}`,"Positive : " +  `${coronaValue[19].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[19].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[19].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::one:"+ `${coronaValue[20].attributes.Provinsi}`,"Positive : " +  `${coronaValue[20].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[20].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[20].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::two:"+ `${coronaValue[21].attributes.Provinsi}`,"Positive : " +  `${coronaValue[21].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[21].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[21].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::three:"+ `${coronaValue[22].attributes.Provinsi}`,"Positive : " +  `${coronaValue[22].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[22].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[22].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::four:"+ `${coronaValue[23].attributes.Provinsi}`,"Positive : " +  `${coronaValue[23].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[23].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[23].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::five:"+ `${coronaValue[24].attributes.Provinsi}`,"Positive : " +  `${coronaValue[24].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[24].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[24].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::six:"+ `${coronaValue[25].attributes.Provinsi}`,"Positive : " +  `${coronaValue[25].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[25].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[25].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::seven:"+ `${coronaValue[26].attributes.Provinsi}`,"Positive : " +  `${coronaValue[26].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[26].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[26].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::eight:"+ `${coronaValue[27].attributes.Provinsi}`,"Positive : " +  `${coronaValue[27].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[27].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[27].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":two::nine:"+ `${coronaValue[28].attributes.Provinsi}`,"Positive : " +  `${coronaValue[28].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[28].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[28].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":three::zero:"+ `${coronaValue[29].attributes.Provinsi}`,"Positive : " +  `${coronaValue[29].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[29].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[29].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":three::one:"+ `${coronaValue[30].attributes.Provinsi}`,"Positive : " +  `${coronaValue[30].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[30].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[30].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":three::two:"+ `${coronaValue[31].attributes.Provinsi}`,"Positive : " +  `${coronaValue[31].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[31].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[31].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField( ":three::three:"+ `${coronaValue[32].attributes.Provinsi}`,"Positive : " +  `${coronaValue[32].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[32].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[32].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .addField(":three::four:" + `${coronaValue[33].attributes.Provinsi}`,"Positive : " + `${coronaValue[33].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[33].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[33].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/1200px-Flag_of_Indonesia.svg.png")
+      .setFooter("Updated From Kawal Corona, "+ timeValue.date_time_txt);
+    message.channel.send(embed);
+  }  
 });
 
 
@@ -507,23 +507,6 @@ client.on('message', (message) => {
     msg.react (":partying_face: :partying_face: :partying_face: :partying_face:")
     console.log("Sukses Reply *emot");
   }
-
-  
-  if (message.content.startsWith("plz")) {              
-      fs.writeFile ("./bacot.json", JSON.stringify (client.msgs, null, 4), err =>{
-        if(err) throw err;
-        console.log("new pesan")
-        message.channel.send ("done");  
-      });
-
-
-  }
-
-  if (message.content.startsWith("get")) {
-      let _message = client.msgs
-      message.channel.send ("ntes" + _message);
-
-    }
     
   }
 
