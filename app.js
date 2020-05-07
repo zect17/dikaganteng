@@ -33,18 +33,34 @@ client.on('message', message => {
   if (message.content === prefix + 'corona') {
     message.channel.send("please enter your country code, ex : -corona.(code)")
     const embed = new MessageEmbed()
-      .setTitle('Here')
-      .setColor(0xff0000)
+      .setTitle('Code Corona')
+      .setColor(12234)
       .setDescription(`:flag_id: Indonesia : id \n :flag_sg: Singapore : sg \n :flag_my: Malaysia : my \n :flag_ph: Philippines : ph \n :flag_us: USA : us`)
     message.channel.send(embed);
   }
   if (message.content === prefix + 'update') {
     const embed = new MessageEmbed()
       .setTitle('Here Bro :)')
-      .setColor(0xff0000)
+      .setColor(12234)
       .setDescription(`New Corona Command ex : -corona.code \n :flag_id: Indonesia : id \n :flag_sg: Singapore : sg \n :flag_my: Malaysia : my \n :flag_ph: Philippines : ph \n :flag_us: USA : us`)
     message.channel.send(embed);
   }
+  if (message.content === prefix + 'help') {
+    const embed = new MessageEmbed()
+      .setTitle('Here Bro :)')
+      .setColor(12234)
+      .setDescription(`New Corona Command ex : -corona.code \n :flag_id: Indonesia : id \n :flag_sg: Singapore : sg \n :flag_my: Malaysia : my \n :flag_ph: Philippines : ph \n :flag_us: USA : us`)
+    message.channel.send(embed);
+  }
+  if (message.content === prefix + 'corona.data') {
+    message.channel.send("Silahkan Masukan Nomor dibelakang Command Contoh : -corona.data1")
+    const embed = new MessageEmbed()
+      .setTitle('Code Corona')
+      .setColor(12234)
+      .setDescription(`-corona.data1 untuk 10 Provinsi Di Indonesia untuk Provinsi berikutnya ketik -corona.data2 dan corona.data3`)
+    message.channel.send(embed);
+  }
+  
 });
 
 
@@ -237,7 +253,7 @@ client.on('message',  async message => {
       .setFooter("Data From Muslim Salat, Updated "+ timeValue.date_time_txt);
     message.channel.send(embed);    
   }
-  if (message.content === '-corona.data') {
+  if (message.content === '-corona.data1') {
     let getCorona = async () => {
       let response = await axios.get(
         "https://api.kawalcorona.com/indonesia/provinsi/"
@@ -255,8 +271,8 @@ client.on('message',  async message => {
     let coronaValue = await getCorona(); 
     let timeValue = await getTime();
     const embed = new MessageEmbed()
-      .setColor(0xff0000)
-      .setTitle("Data COVID-19 Per-Provinsi di INDONESIA")
+      .setColor(12234)
+      .setTitle("Data :biohazard: COVID-19 :biohazard:  1-10 Provinsi  di INDONESIA")
       .addField(":one:" + `${coronaValue[0].attributes.Provinsi}`,"Positive : " + `${coronaValue[0].attributes.Kasus_Posi}` + ":family_man_boy_boy:    Recovered : " + `${coronaValue[0].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[0].attributes.Kasus_Meni}` + ":family_man_boy_boy:")
       .addField(":two:" + `${coronaValue[1].attributes.Provinsi}`,"Positive : " +  `${coronaValue[1].attributes.Kasus_Posi}`+ ":family_man_boy_boy:    Recovered : " + `${coronaValue[1].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[1].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField(":three:" + `${coronaValue[2].attributes.Provinsi}`,"Positive : " + `${coronaValue[2].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[2].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[2].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
@@ -267,6 +283,31 @@ client.on('message',  async message => {
       .addField( ":eight:"+ `${coronaValue[7].attributes.Provinsi}`,"Positive : " +  `${coronaValue[7].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[7].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[7].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField( ":nine:" + `${coronaValue[8].attributes.Provinsi}`,"Positive : " +  `${coronaValue[8].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[8].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[8].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField( ":one::zero:"+ `${coronaValue[9].attributes.Provinsi}`,"Positive : " +  `${coronaValue[9].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[9].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[9].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .setDescription("#stayhome, untuk Data 11-20 Provinsi Ketik -corona.data2 di Chat :laughing: ")
+      .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/1200px-Flag_of_Indonesia.svg.png")
+      .setFooter("Updated From Kawal Corona, "+ timeValue.date_time_txt);
+    message.channel.send(embed);
+  }  
+  if (message.content === '-corona.data2') {
+    let getCorona = async () => {
+      let response = await axios.get(
+        "https://api.kawalcorona.com/indonesia/provinsi/"
+      );
+      let corona = response.data;
+      return corona; 
+    };   
+    let getTime = async () => {
+      let response = await axios.get(
+        "https://api.ipgeolocation.io/timezone?apiKey=9ed5bfa4bdfa4d6a916771bbcd24e4aa&lat=-7.4452823&long=111.03412999999999"
+      );
+      let time = response.data;
+      return time;
+    }; 
+    let coronaValue = await getCorona(); 
+    let timeValue = await getTime();
+    const embed = new MessageEmbed()
+      .setColor(12234)
+      .setTitle("Data :biohazard: COVID-19 :biohazard:  11-20 Provinsi  di INDONESIA")
       .addField( ":one::one:"+ `${coronaValue[10].attributes.Provinsi}`,"Positive : " +  `${coronaValue[10].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[10].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[10].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField( ":one::two:"+ `${coronaValue[11].attributes.Provinsi}`,"Positive : " +  `${coronaValue[11].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[11].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[11].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField( ":one::three:"+ `${coronaValue[12].attributes.Provinsi}`,"Positive : " +  `${coronaValue[12].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[12].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[12].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
@@ -277,6 +318,31 @@ client.on('message',  async message => {
       .addField( ":one::eight:"+ `${coronaValue[17].attributes.Provinsi}`,"Positive : " +  `${coronaValue[17].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[17].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[17].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField( ":one::nine:"+ `${coronaValue[18].attributes.Provinsi}`,"Positive : " +  `${coronaValue[18].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[18].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[18].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField( ":two::zero:"+ `${coronaValue[19].attributes.Provinsi}`,"Positive : " +  `${coronaValue[19].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[19].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[19].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .setDescription("#stayhome, untuk Data 21-30 Provinsi Ketik -corona.data3 di Chat :laughing: ")
+      .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/1200px-Flag_of_Indonesia.svg.png")
+      .setFooter("Updated From Kawal Corona, "+ timeValue.date_time_txt);
+    message.channel.send(embed);
+  } 
+  if (message.content === '-corona.data3') {
+    let getCorona = async () => {
+      let response = await axios.get(
+        "https://api.kawalcorona.com/indonesia/provinsi/"
+      );
+      let corona = response.data;
+      return corona; 
+    };   
+    let getTime = async () => {
+      let response = await axios.get(
+        "https://api.ipgeolocation.io/timezone?apiKey=9ed5bfa4bdfa4d6a916771bbcd24e4aa&lat=-7.4452823&long=111.03412999999999"
+      );
+      let time = response.data;
+      return time;
+    }; 
+    let coronaValue = await getCorona(); 
+    let timeValue = await getTime();
+    const embed = new MessageEmbed()
+      .setColor(12234)
+      .setTitle("Data :biohazard: COVID-19 :biohazard:  21-34 Provinsi  di INDONESIA")
       .addField( ":two::one:"+ `${coronaValue[20].attributes.Provinsi}`,"Positive : " +  `${coronaValue[20].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[20].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[20].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField( ":two::two:"+ `${coronaValue[21].attributes.Provinsi}`,"Positive : " +  `${coronaValue[21].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[21].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[21].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField( ":two::three:"+ `${coronaValue[22].attributes.Provinsi}`,"Positive : " +  `${coronaValue[22].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[22].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[22].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
@@ -291,10 +357,117 @@ client.on('message',  async message => {
       .addField( ":three::two:"+ `${coronaValue[31].attributes.Provinsi}`,"Positive : " +  `${coronaValue[31].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[31].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[31].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField( ":three::three:"+ `${coronaValue[32].attributes.Provinsi}`,"Positive : " +  `${coronaValue[32].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[32].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[32].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
       .addField(":three::four:" + `${coronaValue[33].attributes.Provinsi}`,"Positive : " + `${coronaValue[33].attributes.Kasus_Posi}`+":family_man_boy_boy:    Recovered : " + `${coronaValue[33].attributes.Kasus_Semb}`+ ":family_man_boy_boy:    Meninggal : " + `${coronaValue[33].attributes.Kasus_Meni}`+ ":family_man_boy_boy:")
+      .setDescription("#stayhome")
       .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/1200px-Flag_of_Indonesia.svg.png")
       .setFooter("Updated From Kawal Corona, "+ timeValue.date_time_txt);
     message.channel.send(embed);
-  }  
+  }
+  if (message.content === prefix + 'meme') {
+    let getJoke = async () => {
+      let response = await axios.get(
+        "https://apis.duncte123.me/meme"
+      );
+      let joke = response.data;
+      return joke;    
+    };
+    let jokeValue = await getJoke();
+    const embed = new MessageEmbed()
+      .setColor(12234)
+      .setImage(`${jokeValue.data.image}`)
+      .setTimestamp()
+      .setFooter("Angeline <3")
+    message.channel.send(embed);    
+  }
+  if (message.content === prefix + 'cat') {
+    let getJoke = async () => {
+      let response = await axios.get(
+        "http://aws.random.cat/meow"
+      );
+      let joke = response.data;
+      return joke;    
+    };
+    let jokeValue = await getJoke();
+    const embed = new MessageEmbed()
+      .setColor(12234)
+      .setImage(`${jokeValue.file}`)
+      .setTimestamp()
+      .setFooter("Angeline <3")
+    message.channel.send(embed);    
+  }
+  if (message.content === prefix + 'dog') {
+    let getJoke = async () => {
+      let response = await axios.get(
+        "https://dog.ceo/api/breeds/image/random"
+      );
+      let joke = response.data;
+      return joke;    
+    };
+    let jokeValue = await getJoke();
+    const embed = new MessageEmbed()
+      .setColor(12234)
+      .setImage(`${jokeValue.message}`)
+      .setTimestamp()
+      .setFooter("Angeline <3")
+    message.channel.send(embed);    
+  }
+  // if (message.content === '-say') {
+  //   let annoucement = message.content.substring(5);
+  //   let annoucementChannel = client.channels.cache.find(channel => channel.name.toLoweCase() === 'tabungan');
+  //   if(annoucementChannel)
+  //   annoucementChannel.send(annoucement);  
+  // }
+  if(message.content === prefix + 'sahur1') {
+    let katakata = ['Tak lelah ditebas mimpi semu, tak hilang disembunyikan langit hitam. Cinta aatau bukan, yang pasti kalu tetap yang terindah. Met makan sahur ya','Ya Allah untukMu aku berpuasa, kepadaMu aku beriman dan dengan rizki dariMu aku berbuka, dengan rahmatMu wahai Yang Maha Penyayang', 'Marhaban ya Ramadhan bulan suci kembali tiba. Saat yang tepat untuk menyucikan diri dari segala dosa. Tak perlu basa basi, mohon dimaafkan segala kesalahan.','Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.', 'Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.','Baca Alquran walaupun hanya beberapa ayat saja sambil menunggu imsak jauh lebih keren ketimbang nonton TV.','Janganlah engkau tidur sehabis sahur, karena akan membuat hatimu menjadi keras. Selamat sahur!','Yang sulit saat puasa bukan menahan lapar dan dahaga, melainkan menjaga mata, mulut, tangan, kaki dan hati, selamat sahur.','Suasana Ramadhan sungguh indah karena berhiasan cahaya ibadah, menerangi hati semakin cerah buat kita tersenyum Alhamdulillah, bersyukur kepada Allah Yang Maha Pemurah sebelum imsak menegur. Selamat sahur.', 'Di pasar membeli sayur-mayur, telur dadar buat lauk makan. Selamat makan sahur ya, semoga puasa kita semua berlimpah pahala.', 'Bertegur sapa menjalin silaturahmi. Berbagi ucapan bentuk perhatian beribadahlah sebelum mati. Ayolah sahur jangan dilewatkan untuk kekasih hati.', 'Bulan Ramadhan berlimpah berkah. Penuh ampunan serta hidayah. Ayo kita bangun segera. Sebelum imsak datang menyapa.']
+    setInterval (function() {
+      const embed = new MessageEmbed()
+      .setColor(12234)
+      .setTitle("Sahur Reminder <3")
+      .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Semoga Lancar Puasa! \n Niat Puasa \n نَوَيْتُ صَوْمَ غَدٍ عَنْ اَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هذِهِ السَّنَةِ ِللهِ تَعَالَى \n Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhaana haadzihis sanati lillahi ta'ala`)
+      .setTimestamp()
+      .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
+    message.channel.send(embed);    
+      
+    }, 86400000);
+  }
+  if(message.content === prefix + 'sahur2') {
+    let katakata = ['Tak lelah ditebas mimpi semu, tak hilang disembunyikan langit hitam. Cinta aatau bukan, yang pasti kalu tetap yang terindah. Met makan sahur ya','Ya Allah untukMu aku berpuasa, kepadaMu aku beriman dan dengan rizki dariMu aku berbuka, dengan rahmatMu wahai Yang Maha Penyayang', 'Marhaban ya Ramadhan bulan suci kembali tiba. Saat yang tepat untuk menyucikan diri dari segala dosa. Tak perlu basa basi, mohon dimaafkan segala kesalahan.','Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.', 'Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.','Baca Alquran walaupun hanya beberapa ayat saja sambil menunggu imsak jauh lebih keren ketimbang nonton TV.','Janganlah engkau tidur sehabis sahur, karena akan membuat hatimu menjadi keras. Selamat sahur!','Yang sulit saat puasa bukan menahan lapar dan dahaga, melainkan menjaga mata, mulut, tangan, kaki dan hati, selamat sahur.','Suasana Ramadhan sungguh indah karena berhiasan cahaya ibadah, menerangi hati semakin cerah buat kita tersenyum Alhamdulillah, bersyukur kepada Allah Yang Maha Pemurah sebelum imsak menegur. Selamat sahur.', 'Di pasar membeli sayur-mayur, telur dadar buat lauk makan. Selamat makan sahur ya, semoga puasa kita semua berlimpah pahala.', 'Bertegur sapa menjalin silaturahmi. Berbagi ucapan bentuk perhatian beribadahlah sebelum mati. Ayolah sahur jangan dilewatkan untuk kekasih hati.', 'Bulan Ramadhan berlimpah berkah. Penuh ampunan serta hidayah. Ayo kita bangun segera. Sebelum imsak datang menyapa.']
+    setInterval (function() {
+      const embed = new MessageEmbed()
+      .setColor(12234)
+      .setTitle("Sahur Reminder <3")
+      .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Semoga Lancar Puasa! \n Niat Puasa \n نَوَيْتُ صَوْمَ غَدٍ عَنْ اَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هذِهِ السَّنَةِ ِللهِ تَعَالَى \n Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhaana haadzihis sanati lillahi ta'ala`)
+      .setTimestamp()
+      .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
+    message.channel.send(embed);    
+      
+    }, 86400000);
+  }
+  if(message.content === prefix + 'sahur3') {
+    let katakata = ['Tak lelah ditebas mimpi semu, tak hilang disembunyikan langit hitam. Cinta aatau bukan, yang pasti kalu tetap yang terindah. Met makan sahur ya','Ya Allah untukMu aku berpuasa, kepadaMu aku beriman dan dengan rizki dariMu aku berbuka, dengan rahmatMu wahai Yang Maha Penyayang', 'Marhaban ya Ramadhan bulan suci kembali tiba. Saat yang tepat untuk menyucikan diri dari segala dosa. Tak perlu basa basi, mohon dimaafkan segala kesalahan.','Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.', 'Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.','Baca Alquran walaupun hanya beberapa ayat saja sambil menunggu imsak jauh lebih keren ketimbang nonton TV.','Janganlah engkau tidur sehabis sahur, karena akan membuat hatimu menjadi keras. Selamat sahur!','Yang sulit saat puasa bukan menahan lapar dan dahaga, melainkan menjaga mata, mulut, tangan, kaki dan hati, selamat sahur.','Suasana Ramadhan sungguh indah karena berhiasan cahaya ibadah, menerangi hati semakin cerah buat kita tersenyum Alhamdulillah, bersyukur kepada Allah Yang Maha Pemurah sebelum imsak menegur. Selamat sahur.', 'Di pasar membeli sayur-mayur, telur dadar buat lauk makan. Selamat makan sahur ya, semoga puasa kita semua berlimpah pahala.', 'Bertegur sapa menjalin silaturahmi. Berbagi ucapan bentuk perhatian beribadahlah sebelum mati. Ayolah sahur jangan dilewatkan untuk kekasih hati.', 'Bulan Ramadhan berlimpah berkah. Penuh ampunan serta hidayah. Ayo kita bangun segera. Sebelum imsak datang menyapa.']
+    setInterval (function() {
+      const embed = new MessageEmbed()
+      .setColor(12234)
+      .setTitle("Sahur Reminder <3")
+      .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Semoga Lancar Puasa! \n Niat Puasa \n نَوَيْتُ صَوْمَ غَدٍ عَنْ اَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هذِهِ السَّنَةِ ِللهِ تَعَالَى \n Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhaana haadzihis sanati lillahi ta'ala`)
+      .setTimestamp()
+      .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
+    message.channel.send(embed);    
+      
+    }, 86400000);
+  }
+  if(message.content === prefix + 'buka') {
+    let katakata = ['Menahan segala nafsu dan bersikap sabar adalah hal penting dalam berpuasa. Jadilah pribadi lebih baik dengan puasa mu. Selamat Berbuka Puasa.','Selamat berbuka puasa bagi yang menjalankannya. Semoga ibadah kita diterima oleh Allah SWT. Amiin..','Cara terbaik menghukum orang yang telah menyakiti kita ialah dengan berbuat baik kepadanya. – Selamat Berbuka Puasa.','Taburlah kebaikan kepada siapapun, maka kebaikan akan datang menghampirimu. – Selamat Berbuka Puasa.','Kumandang adzan maghrib menandakan bahwa kita telah menang melawan hawa nafsu seharian. – Selamat Berbuka Puasa.','Dalam penantian kadang kita akan menemukan indahnya hidup. – Selamat berbuka puasa.','Selamat menantikan saat berbuka puasa bagi yang sedang menjalankan ibadah puasa. Semoga Allah melipatgandakan pahala kita. Amin..','Berbuka adalah perayaan kemenangan terbaik. – Selamat Berbuka Puasa.','Berbuka adalah perayaan kemenangan terbaik. Yang lagi buka bersama teman, keluarga, kekasih, selamat buka puasa!!','Berbukalah dengan yang sayang, karena yang manis belum tentu sayang. – Selamat Berbuka Puasa','Senyummu saat berbuka itu tiada duanya. – Selamat Berbuka Puasa.','Selamat berbuka puasa bagi yang belum bisa juga buka hati, meski sudah dilupakan dan disakiti dia berkali-kali.','Mungkin jarak telah memisahkan kita, namun setidaknya aku masih bisa mengucapkan Selamat Berbuka Puasa.']
+    setInterval (function() {
+      const embed = new MessageEmbed()
+      .setColor(12234)
+      .setTitle("Selamat Berbuka Puasa <3")
+      .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Selamat Berbuka Puasa <3! \n Doa Berbuka Puasa \n للّهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ، وَبِكَ وَعَلَيْكَ تَوَكَّلْتُ. ذَهَبَ الظَّمَأُ وَابْتَلَّتِ العُرُوقُ وَثَبَتَ الأَجْرُ إِنْ شاءَ اللهُ. يا وَاسِعَ الفَضْلِ اِغْفِرْ لِي الحَمْدُ لِلهِ الَّذِي هَدَانِي فَصُمْتُ، وَرَزَقَنِي فَأَفْطَرْتُ \n Allahumma laka sumtu wabika aamantu wa bika wa'alaika tawakkaltu dzahabaz zhama’u wabtallatil ‘urûqu wa tsabatal ajru, insyâ Allah. Yaa waa si'al fadhli ighfirlii alhamdulillahilladzi hadaanii fasumtu warozaqii faafthortu`)
+      .setTimestamp()
+      .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
+    message.channel.send(embed);    
+      
+    }, 86400000);
+  }
 });
 
 
