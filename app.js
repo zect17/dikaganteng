@@ -416,8 +416,14 @@ client.on('message',  async message => {
   //   if(annoucementChannel)
   //   annoucementChannel.send(annoucement);  
   // }
-  if(message.content === prefix + 'sahur1') {
+ if(message.content === prefix + 'sahur1') {
     let katakata = ['Tak lelah ditebas mimpi semu, tak hilang disembunyikan langit hitam. Cinta aatau bukan, yang pasti kalu tetap yang terindah. Met makan sahur ya','Ya Allah untukMu aku berpuasa, kepadaMu aku beriman dan dengan rizki dariMu aku berbuka, dengan rahmatMu wahai Yang Maha Penyayang', 'Marhaban ya Ramadhan bulan suci kembali tiba. Saat yang tepat untuk menyucikan diri dari segala dosa. Tak perlu basa basi, mohon dimaafkan segala kesalahan.','Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.', 'Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.','Baca Alquran walaupun hanya beberapa ayat saja sambil menunggu imsak jauh lebih keren ketimbang nonton TV.','Janganlah engkau tidur sehabis sahur, karena akan membuat hatimu menjadi keras. Selamat sahur!','Yang sulit saat puasa bukan menahan lapar dan dahaga, melainkan menjaga mata, mulut, tangan, kaki dan hati, selamat sahur.','Suasana Ramadhan sungguh indah karena berhiasan cahaya ibadah, menerangi hati semakin cerah buat kita tersenyum Alhamdulillah, bersyukur kepada Allah Yang Maha Pemurah sebelum imsak menegur. Selamat sahur.', 'Di pasar membeli sayur-mayur, telur dadar buat lauk makan. Selamat makan sahur ya, semoga puasa kita semua berlimpah pahala.', 'Bertegur sapa menjalin silaturahmi. Berbagi ucapan bentuk perhatian beribadahlah sebelum mati. Ayolah sahur jangan dilewatkan untuk kekasih hati.', 'Bulan Ramadhan berlimpah berkah. Penuh ampunan serta hidayah. Ayo kita bangun segera. Sebelum imsak datang menyapa.']
+    const embed = new MessageEmbed()
+    .setColor(12234)
+    .setTitle("Sahur Reminder <3")
+    .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Semoga Lancar Puasa! \n Niat Puasa \n نَوَيْتُ صَوْمَ غَدٍ عَنْ اَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هذِهِ السَّنَةِ ِللهِ تَعَالَى \n Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhaana haadzihis sanati lillahi ta'ala`)
+    .setTimestamp()
+    .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
     setInterval (function() {
       const embed = new MessageEmbed()
       .setColor(12234)
@@ -431,6 +437,12 @@ client.on('message',  async message => {
   }
   if(message.content === prefix + 'sahur2') {
     let katakata = ['Tak lelah ditebas mimpi semu, tak hilang disembunyikan langit hitam. Cinta aatau bukan, yang pasti kalu tetap yang terindah. Met makan sahur ya','Ya Allah untukMu aku berpuasa, kepadaMu aku beriman dan dengan rizki dariMu aku berbuka, dengan rahmatMu wahai Yang Maha Penyayang', 'Marhaban ya Ramadhan bulan suci kembali tiba. Saat yang tepat untuk menyucikan diri dari segala dosa. Tak perlu basa basi, mohon dimaafkan segala kesalahan.','Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.', 'Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.','Baca Alquran walaupun hanya beberapa ayat saja sambil menunggu imsak jauh lebih keren ketimbang nonton TV.','Janganlah engkau tidur sehabis sahur, karena akan membuat hatimu menjadi keras. Selamat sahur!','Yang sulit saat puasa bukan menahan lapar dan dahaga, melainkan menjaga mata, mulut, tangan, kaki dan hati, selamat sahur.','Suasana Ramadhan sungguh indah karena berhiasan cahaya ibadah, menerangi hati semakin cerah buat kita tersenyum Alhamdulillah, bersyukur kepada Allah Yang Maha Pemurah sebelum imsak menegur. Selamat sahur.', 'Di pasar membeli sayur-mayur, telur dadar buat lauk makan. Selamat makan sahur ya, semoga puasa kita semua berlimpah pahala.', 'Bertegur sapa menjalin silaturahmi. Berbagi ucapan bentuk perhatian beribadahlah sebelum mati. Ayolah sahur jangan dilewatkan untuk kekasih hati.', 'Bulan Ramadhan berlimpah berkah. Penuh ampunan serta hidayah. Ayo kita bangun segera. Sebelum imsak datang menyapa.']
+    const embed = new MessageEmbed()
+    .setColor(12234)
+    .setTitle("Sahur Reminder <3")
+    .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Semoga Lancar Puasa! \n Niat Puasa \n نَوَيْتُ صَوْمَ غَدٍ عَنْ اَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هذِهِ السَّنَةِ ِللهِ تَعَالَى \n Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhaana haadzihis sanati lillahi ta'ala`)
+    .setTimestamp()
+    .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
     setInterval (function() {
       const embed = new MessageEmbed()
       .setColor(12234)
@@ -444,6 +456,12 @@ client.on('message',  async message => {
   }
   if(message.content === prefix + 'sahur3') {
     let katakata = ['Tak lelah ditebas mimpi semu, tak hilang disembunyikan langit hitam. Cinta aatau bukan, yang pasti kalu tetap yang terindah. Met makan sahur ya','Ya Allah untukMu aku berpuasa, kepadaMu aku beriman dan dengan rizki dariMu aku berbuka, dengan rahmatMu wahai Yang Maha Penyayang', 'Marhaban ya Ramadhan bulan suci kembali tiba. Saat yang tepat untuk menyucikan diri dari segala dosa. Tak perlu basa basi, mohon dimaafkan segala kesalahan.','Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.', 'Bulan Ramadhan adalah bulan penuh berkah. Bulan Ramadhan adalah rajanya bulan yang dinanti oleh jutaan umat muslim.','Baca Alquran walaupun hanya beberapa ayat saja sambil menunggu imsak jauh lebih keren ketimbang nonton TV.','Janganlah engkau tidur sehabis sahur, karena akan membuat hatimu menjadi keras. Selamat sahur!','Yang sulit saat puasa bukan menahan lapar dan dahaga, melainkan menjaga mata, mulut, tangan, kaki dan hati, selamat sahur.','Suasana Ramadhan sungguh indah karena berhiasan cahaya ibadah, menerangi hati semakin cerah buat kita tersenyum Alhamdulillah, bersyukur kepada Allah Yang Maha Pemurah sebelum imsak menegur. Selamat sahur.', 'Di pasar membeli sayur-mayur, telur dadar buat lauk makan. Selamat makan sahur ya, semoga puasa kita semua berlimpah pahala.', 'Bertegur sapa menjalin silaturahmi. Berbagi ucapan bentuk perhatian beribadahlah sebelum mati. Ayolah sahur jangan dilewatkan untuk kekasih hati.', 'Bulan Ramadhan berlimpah berkah. Penuh ampunan serta hidayah. Ayo kita bangun segera. Sebelum imsak datang menyapa.']
+    const embed = new MessageEmbed()
+    .setColor(12234)
+    .setTitle("Sahur Reminder <3")
+    .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Semoga Lancar Puasa! \n Niat Puasa \n نَوَيْتُ صَوْمَ غَدٍ عَنْ اَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هذِهِ السَّنَةِ ِللهِ تَعَالَى \n Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhaana haadzihis sanati lillahi ta'ala`)
+    .setTimestamp()
+    .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
     setInterval (function() {
       const embed = new MessageEmbed()
       .setColor(12234)
@@ -455,8 +473,16 @@ client.on('message',  async message => {
       
     }, 86400000);
   }
-  if(message.content === prefix + 'buka') {
+  if(message.content === prefix + 'buka5') {
     let katakata = ['Menahan segala nafsu dan bersikap sabar adalah hal penting dalam berpuasa. Jadilah pribadi lebih baik dengan puasa mu. Selamat Berbuka Puasa.','Selamat berbuka puasa bagi yang menjalankannya. Semoga ibadah kita diterima oleh Allah SWT. Amiin..','Cara terbaik menghukum orang yang telah menyakiti kita ialah dengan berbuat baik kepadanya. – Selamat Berbuka Puasa.','Taburlah kebaikan kepada siapapun, maka kebaikan akan datang menghampirimu. – Selamat Berbuka Puasa.','Kumandang adzan maghrib menandakan bahwa kita telah menang melawan hawa nafsu seharian. – Selamat Berbuka Puasa.','Dalam penantian kadang kita akan menemukan indahnya hidup. – Selamat berbuka puasa.','Selamat menantikan saat berbuka puasa bagi yang sedang menjalankan ibadah puasa. Semoga Allah melipatgandakan pahala kita. Amin..','Berbuka adalah perayaan kemenangan terbaik. – Selamat Berbuka Puasa.','Berbuka adalah perayaan kemenangan terbaik. Yang lagi buka bersama teman, keluarga, kekasih, selamat buka puasa!!','Berbukalah dengan yang sayang, karena yang manis belum tentu sayang. – Selamat Berbuka Puasa','Senyummu saat berbuka itu tiada duanya. – Selamat Berbuka Puasa.','Selamat berbuka puasa bagi yang belum bisa juga buka hati, meski sudah dilupakan dan disakiti dia berkali-kali.','Mungkin jarak telah memisahkan kita, namun setidaknya aku masih bisa mengucapkan Selamat Berbuka Puasa.']
+    message.channel.send("buka reminder on")
+    const embed = new MessageEmbed()
+      .setColor(12234)
+      .setTitle("Selamat Berbuka Puasa <3")
+      .setDescription(katakata[Math.floor(Math.random()*katakata.length)] + `\n Selamat Berbuka Puasa <3! \n Doa Berbuka Puasa \n للّهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ، وَبِكَ وَعَلَيْكَ تَوَكَّلْتُ. ذَهَبَ الظَّمَأُ وَابْتَلَّتِ العُرُوقُ وَثَبَتَ الأَجْرُ إِنْ شاءَ اللهُ. يا وَاسِعَ الفَضْلِ اِغْفِرْ لِي الحَمْدُ لِلهِ الَّذِي هَدَانِي فَصُمْتُ، وَرَزَقَنِي فَأَفْطَرْتُ \n Allahumma laka sumtu wabika aamantu wa bika wa'alaika tawakkaltu dzahabaz zhama’u wabtallatil ‘urûqu wa tsabatal ajru, insyâ Allah. Yaa waa si'al fadhli ighfirlii alhamdulillahilladzi hadaanii fasumtu warozaqii faafthortu`)
+      .setTimestamp()
+      .setFooter("Selamat Menunaikan Puasa di Bulan Suci ini")
+    message.channel.send(embed);    
     setInterval (function() {
       const embed = new MessageEmbed()
       .setColor(12234)
