@@ -47,9 +47,27 @@ client.on('message', message => {
   }
   if (message.content === prefix + 'help') {
     const embed = new MessageEmbed()
-      .setTitle('Here Bro :)')
+      .setTitle('Informations')
       .setColor(12234)
-      .setDescription(`New Corona Command ex : -corona.code \n :flag_id: Indonesia : id \n :flag_sg: Singapore : sg \n :flag_my: Malaysia : my \n :flag_ph: Philippines : ph \n :flag_us: USA : us`)
+      .setDescription(`command -help di gantikan dengan -menu`)
+    message.channel.send(embed);
+  }
+  if (message.content === prefix + 'menu') {
+    const embed = new MessageEmbed()
+      .setTitle(':star: Angeline.BOT Menu :star:')
+      .setColor(12234)
+      .addField('-corona.[code]','Gives You COVID-19 Information -corona for code',true)
+      .addField('-weather.[Location Name]','Gives You Weather Information',true)
+      .addField('-corona.id','Menampilkan Informasi COVID-19 di Indonesia',true)
+      .addField('-corona.data1','Menampilkan Informasi COVID-19 Per-Provinsi di Indonesia', true)
+      .addField('-dog','Menampilkan Gambar Anjinx Acak', true)
+      .addField('-cat','Menampilkan Gambar Kucing Acak', true)
+      .addField('-meme','Menampilkan Gambar Meme Acak',true)
+      .addField('-ping','Menampilkan Ping',true)
+      .addField('-joke','Menampilkan Joke Acak',true)
+      .addField('-quotes','Menampilkan Quotes Acak',true)
+      .setTimestamp()
+      .setFooter('ty, Updated')
     message.channel.send(embed);
   }
   if (message.content === prefix + 'corona.data') {
@@ -66,7 +84,13 @@ client.on('message', message => {
 
 
 client.on('message',  async message => {
-  if (message.content === 'off') {
+   if (message.content === prefix + 'ping'){
+      message.channel.send("Wait....").then(m => {
+        let ping = m.createdTimestamp - message.createdTimestamp
+        m.edit(`Ping: \`${ping}\``)
+      })
+  }
+  if (message.content === prefix + 'joke') {
     let getJoke = async () => {
       let response = await axios.get(
         "https://official-joke-api.appspot.com/random_joke"
@@ -77,8 +101,23 @@ client.on('message',  async message => {
     let jokeValue = await getJoke();
     const embed = new MessageEmbed()
       .setTitle(jokeValue.setup)
-      .setColor(0xff0000)
+      .setColor(12234)
       .setDescription(jokeValue.punchline);
+    message.channel.send(embed);    
+  }
+  if (message.content === prefix + 'quotes') {
+    let getJoke = async () => {
+      let response = await axios.get(
+        "https://api.quotable.io/random"
+      );
+      let joke = response.data;
+      return joke;    
+    };
+    let jokeValue = await getJoke();
+    const embed = new MessageEmbed()
+      .setTitle(jokeValue.content)
+      .setColor(12234)
+      .setDescription("by " + jokeValue.author);
     message.channel.send(embed);    
   }
   if (message.content === '-corona.id') {
@@ -730,7 +769,7 @@ client.on('message', (message) => {
 
 }
 
-if(msg.startsWith (prefix + "p")) {
+if(msg.startsWith (prefix + "funny")) {
   number = 2
   var random = Math.floor (Math.random() * (number - 1 +1)) +1;
   switch (random) {
