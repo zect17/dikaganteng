@@ -49,7 +49,7 @@ client.on('message', message => {
     const embed = new MessageEmbed()
       .setTitle('Informations')
       .setColor(12234)
-      .setDescription(`command -help di gantikan dengan -menu`)
+      .setDescription(`command -help has been replaced to -menu`)
     message.channel.send(embed);
   }
   if (message.content === prefix + 'menu') {
