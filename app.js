@@ -57,7 +57,7 @@ client.on('message', message => {
       .setTitle(':star: Angeline.BOT Menu :star:')
       .setColor(12234)
       .addField('-corona.[code]','Gives You COVID-19 Information -corona for code',true)
-      .addField('-weather.[Location Name]','Gives You Weather Information',true)
+      .addField('-weather.[Location Name]','Gives You Weather Information *Maintanace*',true)
       .addField('-corona.id','Menampilkan Informasi COVID-19 di Indonesia',true)
       .addField('-corona.data1','Menampilkan Informasi COVID-19 Per-Provinsi di Indonesia', true)
       .addField('-dog','Menampilkan Gambar Anjinx Acak', true)
