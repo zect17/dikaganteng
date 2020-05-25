@@ -142,7 +142,7 @@ client.on('message',  async message => {
       .setTitle(":flag_id: :biohazard: Status COVID-19 di Indonesia :biohazard: :flag_id:")
       .addField(":family_man_boy_boy: Confirmed" , coronaValue.cmt + "(+" + coronaValue.new_cmt + ")", true)
       .addField(":skull_crossbones: Deaths" , coronaValue.fst + "(+" + coronaValue.new_fst + ")", true)
-      .addField(":gift_heart: Recovered" , coronaValue.fst, true)
+      .addField(":gift_heart: Recovered" , coronaValue.sdt, true)
       .setDescription("#Stayhome, Jangan lupa cuci tangan bangsat")
       .setThumbnail("https://cdn.pixabay.com/photo/2020/03/10/08/55/virus-4918308_960_720.png")
       .setFooter("Data From Kawal Corona, Updated "+ timeValue.date_time_txt);
@@ -171,7 +171,7 @@ client.on('message',  async message => {
       .setTitle(":flag_sg: :biohazard: Status COVID-19 | Singapore :biohazard: :flag_sg:")
       .addField(":family_man_boy_boy: Confirmed" , coronaValue.cmt + "(+" + coronaValue.new_cmt + ")", true)
       .addField(":skull_crossbones: Deaths" , coronaValue.fst + "(+" + coronaValue.new_fst + ")", true)
-      .addField(":gift_heart: Recovered" , coronaValue.fst, true)
+      .addField(":gift_heart: Recovered" , coronaValue.sdt, true)
       .setDescription("#Stayhome")
       .setThumbnail("https://cdn.pixabay.com/photo/2020/03/10/08/55/virus-4918308_960_720.png")
       .setFooter("Data From Kawal Corona, Updated "+ timeValue.date_time_txt);
@@ -199,7 +199,7 @@ client.on('message',  async message => {
       .setTitle(":flag_us:  :biohazard: Status COVID-19 | USA :biohazard: :flag_us: ")
       .addField(":family_man_boy_boy: Confirmed" , coronaValue.cmt + "(+" + coronaValue.new_cmt + ")", true)
       .addField(":skull_crossbones: Deaths" , coronaValue.fst + "(+" + coronaValue.new_fst + ")", true)
-      .addField(":gift_heart: Recovered" , coronaValue.fst, true)
+      .addField(":gift_heart: Recovered" , coronaValue.sdt, true)
       .setDescription("#Stayhome")
       .setThumbnail("https://cdn.pixabay.com/photo/2020/03/10/08/55/virus-4918308_960_720.png")
       .setFooter("Data From Kawal Corona, Updated "+ timeValue.date_time_txt);
@@ -227,7 +227,7 @@ client.on('message',  async message => {
       .setTitle(":flag_ph: :biohazard: Status COVID-19 | Philippines :biohazard: :flag_ph:")
       .addField(":family_man_boy_boy: Confirmed" , coronaValue.cmt + "(+" + coronaValue.new_cmt + ")", true)
       .addField(":skull_crossbones: Deaths" , coronaValue.fst + "(+" + coronaValue.new_fst + ")", true)
-      .addField(":gift_heart: Recovered" , coronaValue.fst, true)
+      .addField(":gift_heart: Recovered" , coronaValue.sdt, true)
       .setDescription("#Stayhome, Jangan lupa cuci tangan bangsat")
       .setThumbnail("https://cdn.pixabay.com/photo/2020/03/10/08/55/virus-4918308_960_720.png")
       .setFooter("Data From Kawal Corona, Updated "+ timeValue.date_time_txt);
@@ -256,7 +256,7 @@ client.on('message',  async message => {
       .setTitle(":flag_my: :biohazard: Status COVID-19 | Malaysia :biohazard: :flag_my:")
       .addField(":family_man_boy_boy: Confirmed" , coronaValue.cmt + "(+" + coronaValue.new_cmt + ")", true)
       .addField(":skull_crossbones: Deaths" , coronaValue.fst + "(+" + coronaValue.new_fst + ")", true)
-      .addField(":gift_heart: Recovered" , coronaValue.fst, true)
+      .addField(":gift_heart: Recovered" , coronaValue.sdt, true)
       .setDescription("#Stayhome, Jangan lupa cuci tangan bangsat")
       .setThumbnail("https://cdn.pixabay.com/photo/2020/03/10/08/55/virus-4918308_960_720.png")
       .setFooter("Data From Kawal Corona, Updated "+ timeValue.date_time_txt);
